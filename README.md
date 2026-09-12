@@ -5,6 +5,31 @@ Field notes, May–September 2026. One events business: a live Meta ad account, 
 
 Twenty-nine of the thirty-four reported success. The interesting question turned out not to be how they failed, but how anyone ever found out — and, five months in, whether that's getting any easier. It isn't yet.
 
+## The month-by-month record
+
+This page is the consolidated write-up as it stood on **2026-09-07, at 34 incidents**.
+The full record lives in the month files, which continue past it — the catalogue now runs
+to **48**, and September alone holds 31.
+
+| Month | Incidents | File |
+|---|---:|---|
+| May 2026 | 1 | [FIELD_NOTES_2026-05.md](FIELD_NOTES_2026-05.md) |
+| June 2026 | 3 | [FIELD_NOTES_2026-06.md](FIELD_NOTES_2026-06.md) |
+| July 2026 | 2 | [FIELD_NOTES_2026-07.md](FIELD_NOTES_2026-07.md) |
+| August 2026 | 11 | [FIELD_NOTES_2026-08.md](FIELD_NOTES_2026-08.md) |
+| September 2026 | 31 | [FIELD_NOTES_2026-09.md](FIELD_NOTES_2026-09.md) |
+
+Incident numbers are assigned in catalogue order, not calendar order, and are never
+reassigned once published — so a May incident can carry a higher number than an August
+one. Detection is classified the same way throughout: `GATE`, `THREW`, `HUMAN`,
+`OPERATOR`, `LATER`.
+
+**Six of the forty-eight were caught by anything automated — 13%.** That share has fallen
+in every pass: 11% of 18, then 9% of 22, then 15% of 34, now 13% of 48. One of the
+forty-eight (incident 40) is an error in this catalogue itself, found when a later pass
+checked one of its claims against the live system — the only such audit anyone has run.
+
+
 How each of the 34 was detected
 Detection	Count	
 Gate — a deterministic check refused it	1	
