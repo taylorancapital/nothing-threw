@@ -87,6 +87,9 @@ synchronous tests finished before the exit landed.
 **Cost:** the suite passed for a reason that had nothing to do with the code
 being right, and was reported as verified.
 
+> When a check passes, ask what it would have taken to fail. If the answer is
+> "different machine state," it verified nothing.
+
 **Detection:** `LATER`.
 
 ### C. Silent failure — the error was swallowed and read as absence of data — 4 incidents

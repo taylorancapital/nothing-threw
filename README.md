@@ -24,10 +24,21 @@ reassigned once published — so a May incident can carry a higher number than a
 one. Detection is classified the same way throughout: `GATE`, `THREW`, `HUMAN`,
 `OPERATOR`, `LATER`.
 
-**Six of the forty-eight were caught by anything automated — 13%.** That share has fallen
-in every pass: 11% of 18, then 9% of 22, then 15% of 34, now 13% of 48. One of the
-forty-eight (incident 40) is an error in this catalogue itself, found when a later pass
-checked one of its claims against the live system — the only such audit anyone has run.
+**Six of the forty-eight were caught by anything automated — 13%.** Across passes that
+share has gone 11% of 18, 9% of 22, 15% of 34, 13% of 48 — a 9–15% band with no
+trend. The rise at the third pass was an artifact of backfilling May–July, which added
+June's two same-day code errors and lifted the numerator from 2 to 5 in one pass. One of
+the forty-eight (incident 40) is an error in this catalogue itself, found when a later
+pass checked one of its claims against the live system — the only such audit anyone has
+run.
+
+**Also here:**
+
+- [SIX_OF_FORTY_EIGHT.md](SIX_OF_FORTY_EIGHT.md) — the argument in one essay: why the
+  share caught by anything automated has not improved, and why it probably won't.
+- [TAXONOMY.md](TAXONOMY.md) — the method, written to be copied. Detection modes,
+  failure classes, the bar for inclusion, and how to run a monthly pass against your own
+  system.
 
 
 How each of the 34 was detected

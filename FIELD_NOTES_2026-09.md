@@ -45,12 +45,27 @@ investigations, audit closeouts, a workflow's own follow-up edit, a narrower
 question about an email quota. That is a real pattern in how this project
 catches its own mistakes now, not just how this document finds them.
 
-**The automated share (`GATE`+`THREW`) is still falling, and this pass
-lowered it again.** Across the full five-month catalogue: May 0% (0/1) →
-June 67% (2/3, small-sample — two same-day syntax/init errors) → July 50%
-(1/2) → August 9% (1/11) → September 6% (2/31) → cumulative 13% (6/48). The
-previous pass reported 15% (5/34); this one reports 13%. Every edition so far
-has reported a lower number than the one before it.
+**The automated share (`GATE`+`THREW`) is not improving.** Per month across
+the full five-month catalogue: May 0% (0/1) → June 67% (2/3, small-sample —
+two same-day syntax/init errors) → July 50% (1/2) → August 9% (1/11) →
+September 6% (2/31). Cumulative at each pass: **11% (2/18) → 9% (2/22) →
+15% (5/34) → 13% (6/48)**.
+
+> **Correction, 2026-09-12.** The first version of this paragraph said "every
+> edition so far has reported a lower number than the one before it." That is
+> false: 9% → 15% is a rise. The claim was published here, in the artifact,
+> and in the public repo before being caught by re-reading edition 1's own
+> "Two of eighteen were caught by the system itself."
+
+The rise at the third pass was an artifact of the sweep, not of anything
+working: backfilling May–July added June's two same-day syntax and init
+errors, which are precisely the loud, self-announcing kind, and lifted the
+numerator from 2 to 5 in one pass. The honest reading is narrower and harder
+to argue with than a trend line: across five months, a 2.7× growth in
+catalogued incidents, and every countermeasure built so far, **the share
+anything automated catches has stayed inside a 9–15% band and has never
+durably improved.** "It is falling" invites the obvious objection that the
+denominator grew. "It has not moved" does not.
 
 **Two things are worth separating, because this pass found both.** First,
 countermeasures *are* being built — the listing-redirect `--check` became a
