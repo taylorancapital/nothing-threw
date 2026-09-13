@@ -180,7 +180,7 @@ retracted report implied.
 of the repository that runs this business, before being retracted the same
 evening. No ad account change was made on the strength of the wrong number
 before the retraction, per the retraction commit itself — the near-miss is
-real regardless. **Anchor:** commit `c5d1cfd4`, 2026-09-04 21:45:12 EDT, "Two
+real regardless. **Anchor:** commit `4b85df94`, 2026-09-04 21:45:12 EDT, "Two
 attribution bugs, and a retraction of yesterday's headline (#446)"; memory
 `meta-attribution-is-not-sales`. **Detection:** `LATER`.
 
@@ -214,7 +214,7 @@ to a stale first touch instead (bug two) — both live since whenever the
 original attribution code shipped, both found only because the same
 investigation that retracted incident 29's headline went adversarial on its
 own pipeline rather than stopping at the first correction. **Anchor:** commit
-`c5d1cfd4`, same PR as incident 29; new test `attribution-wiring.test.js`
+`4b85df94`, same PR as incident 29; new test `attribution-wiring.test.js`
 extracts and executes the actual cookie regex from each page to prevent
 regression. **Detection:** `LATER`.
 
@@ -308,7 +308,7 @@ PR. This is the same *shape* as incident 29 — a report reading an
 attribution surface as ground truth for sales — through an entirely different
 mechanism, nine days later, in the automated path rather than a hand-written
 one. **Anchor:** `Night Tasks/logs/2026-09-11.log` line 130 (the headline as
-written); commit `54e2c646`, "GA4 missed both 09-08 sales; the nightly's
+written); commit `b6640b1c`, "GA4 missed both 09-08 sales; the nightly's
 'checkout sold nothing in nine days' headline is retracted in-file (#528)";
 memory `ga4-purchase-count-is-not-sales`. **Detection:** `LATER`.
 
@@ -332,8 +332,8 @@ on the account that was working, delivered to the person who had asked
 precisely that question. Corrected within the session; the channel is now
 synced nightly into `ad_spend/{date}__eventbrite` with 70 documents
 backfilled. **Anchor:** memory `paid-alternatives-all-lost-to-meta`;
-`reports/CHANNEL_ALTERNATIVES_2026-09-11.md` (commit `eb07acc9`, #534); the
-sync built in response, commit `0c366c04` (#539). **Detection:** `HUMAN` —
+`reports/CHANNEL_ALTERNATIVES_2026-09-11.md` (commit `3a26f119`, #534); the
+sync built in response, commit `16756b3f` (#539). **Detection:** `HUMAN` —
 Taylor's own description of what he was spending on contradicted it, and he
 tested the undocumented endpoints himself.
 
@@ -353,9 +353,9 @@ state, unchanged since 08-25: $0 spend since 07-24, $37.91 lifetime.
 **Cost:** a live-looking spend figure for a dormant ad account, published two
 nights running, in the standing summary the operator reads first. The durable
 cost is the method — correcting the output of a generator, in the generator's
-output, leaves the generator wrong. **Anchor:** commit `4c697806`, 2026-09-07
+output, leaves the generator wrong. **Anchor:** commit `25c865a5`, 2026-09-07
 13:47:29 EDT, "Same failure two nights running, and a bug fixed in prose, not
-code (#476)"; fixed in code by `8b1ded04` (#478). **Detection:** `LATER`.
+code (#476)"; fixed in code by `ca7eb78b` (#478). **Detection:** `LATER`.
 
 ---
 
@@ -376,7 +376,7 @@ in its own registry as never tried, so nothing was built on it and nothing
 measured it. The registry's own `_evidence` line ("Zero. No meetup, no
 allevents, no discoverlancaster, no lancasteronline…") was corrected in place
 rather than deleted, so the date it stopped being true stays visible.
-**Anchor:** commit `7e7ede31` (#485), 2026-09-10 01:13:13 EDT; memory
+**Anchor:** commit `3d225b27` (#485), 2026-09-10 01:13:13 EDT; memory
 `lancasteronline-is-the-biggest-free-channel`. **Detection:** `LATER` — found
 while syndicating an unrelated event.
 
@@ -401,7 +401,7 @@ below its actual ticket price. Fixed to use the row's own date, with a
 regression test at `tests/campaign-export-price.test.js` — but the fix only
 covers new renders, and the repair of the existing art cascaded through three
 more failures (see incidents 43 and 45, and the count error below).
-**Anchor:** commit `af8103d2`, 2026-09-10 21:16:12 EDT, "Slide art priced
+**Anchor:** commit `ee02f095`, 2026-09-10 21:16:12 EDT, "Slide art priced
 every post by the day its sheet was rendered (#519)"; memory
 `slide-art-price-is-baked-at-render`. **Detection:** `LATER`.
 
@@ -440,7 +440,7 @@ working. The cost is to this document. A failure catalogue whose entire
 argument rests on one ratio — how many failures anything automated catches —
 reported a fix as unbuilt, and did so in the pessimistic direction, which is
 the direction a reader of a failure catalogue is least likely to challenge.
-**Anchor:** `reports/FIELD_NOTES_2026-09.md` as of commit `57be2a36`,
+**Anchor:** `reports/FIELD_NOTES_2026-09.md` as of commit `9d064806`,
 §DECISION and §C-10; `Get-ScheduledTask "Meta Ads Results Pull"` read
 2026-09-12; `HANDOFF.md`, "Open threads nobody owns". **Detection:** `LATER`.
 
@@ -511,7 +511,7 @@ as "a working link that reports no attribution — the worst failure shape
 available," one level worse: not a mangled link, an absent one. **A real gate
 was built in response** — `.github/workflows/test.yml:62` now runs
 `--check` on every build, added 2026-09-09 with the reason recorded in a
-15-line comment above it. **Anchor:** commit `7e7ede31` (#485);
+15-line comment above it. **Anchor:** commit `3d225b27` (#485);
 `.github/workflows/test.yml:44-62`. **Detection:** `LATER`.
 
 ---
@@ -536,7 +536,7 @@ and a near-miss on the only gate standing between the queue and publication —
 the check that exists specifically to stop a post going out without art would
 have waved through 13 rows with no art, because it tests for the absence of a
 string rather than the presence of a file. Caught before any of those rows
-reached `approve`. **Anchor:** commit `af8103d2` (#519), which cleared them;
+reached `approve`. **Anchor:** commit `ee02f095` (#519), which cleared them;
 introduced in #493; memory `queue-asset-files-empty-until-art`.
 **Detection:** `LATER`.
 
@@ -632,7 +632,7 @@ the cap had been refused.** How many refusals this swallowed over the life of
 the code is not recoverable, because nothing wrote them down. Now a shared
 `logRejected()` writes one line per refusal and each pass counts rejections
 separately from skips; the lock records `notified` true/false plus
-`notifyError`. **Anchor:** commit `dc89d901`, 2026-09-10 02:04:16 EDT, "A
+`notifyError`. **Anchor:** commit `9e7ad94c`, 2026-09-10 02:04:16 EDT, "A
 Resend rejection counted as a skip, and a refused match email logged as sent
 (#492)"; memory `resend-quota-notice-is-a-warning`. **Detection:** `LATER` —
 found while answering a narrower question about a quota notice.
@@ -660,7 +660,7 @@ reports failure on success, and the probe reported success on failure.
 recorded as removed and left in place; caught and cleared in #545. The correct
 probe asks for `id` **alone** — `(#10) Object does not exist` then means
 deleted — cross-checked against `/<page-id>/scheduled_posts`. **Anchor:**
-memory `facebook-delete-error-is-a-lie`, 2026-09-11; commit `65d80081`, "Clear
+memory `facebook-delete-error-is-a-lie`, 2026-09-11; commit `39b0fcc7`, "Clear
 the last six Loxleys fb ids; every stale Facebook post is gone (#545)".
 **Detection:** `LATER`.
 
@@ -739,7 +739,7 @@ deleted from the shared handoff file and merged to the main branch. Recovered
 verbatim from the pre-merge commit and restored in #483, with the restoration
 noted in the text — a thread that silently reappears reads as continuous when
 it was not. **Anchor:** commit for #482, 2026-09-08; recovery commit
-`34dc15e6`, "handoff: restore an entry #482 deleted, and close it out with
+`bbeddc5b`, "handoff: restore an entry #482 deleted, and close it out with
 evidence (#483)"; memory `handoff-span-replace-eats-entries`. **Detection:**
 `LATER`.
 
@@ -768,7 +768,7 @@ says "no longer"/"ended", and puts upcoming events one click away, so a stale
 listing pointing at it still recovers the visitor, where a 404 loses them.
 Flagged rather than hand-patched, because the script's docblock forbids
 hand-editing a `/l/` entry; the open question is whether the generator should
-keep recently-past events for a grace window. **Anchor:** commit `7e7ede31`
+keep recently-past events for a grace window. **Anchor:** commit `3d225b27`
 (#485), third commit message in the chain, 2026-09-10. **Detection:** `LATER`.
 
 ### E. Concurrency — several agents, one working tree — 1 incident

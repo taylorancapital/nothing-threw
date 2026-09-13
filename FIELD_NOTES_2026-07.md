@@ -1,6 +1,6 @@
 # The nightly's first month, and its first failure nobody escalated
 
-**July 2026.** Nightly automation started 2026-07-24 (`54eae136`) — the first
+**July 2026.** Nightly automation started 2026-07-24 (`caaedbe5`) — the first
 month there was an unattended agent to fail at all. Part of a five-month
 retroactive sweep continuing the numbering from
 `reports/NOTHING_THREW_2026-09-04.md` (01–18) and
@@ -90,8 +90,8 @@ each time.
 
 **Cost:** three-plus nights of completed analysis stranded outside git,
 invisible to anyone not looking directly in the Night Tasks folder. The
-reports were eventually recovered and merged 2026-07-30 (`d3208d1d`, PR
-#125; `6a6e2d74`, PR #128) — two days after the last of the three. This is
+reports were eventually recovered and merged 2026-07-30 (`6bc59a53`, PR
+#125; `b210858d`, PR #128) — two days after the last of the three. This is
 the same *shape* of failure as August's incident 11 (a finished report
 stranded with no PR) but a different root cause: incident 11 was a
 shell-quoting bug in a script; this is a folder permission scope on the
@@ -131,6 +131,6 @@ doesn't appear until incident 13, in September.
   read conservatively as at least two full wasted nights, possibly three.
 - **The precise date the Cowork folder-connection scope was ever corrected**,
   as opposed to the reports simply being manually pushed around it on 07-30.
-  Both `d3208d1d` and `6a6e2d74` are recovery commits for already-written
+  Both `6bc59a53` and `b210858d` are recovery commits for already-written
   reports, not evidence the underlying scope problem itself was fixed.
 - **Names, account identifiers and customer records are omitted throughout.**

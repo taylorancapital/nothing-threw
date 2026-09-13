@@ -35,7 +35,7 @@ to say anything about detection mix beyond "a human looked before it mattered."
 
 ### 23 — A pricing refactor that touched half of a two-sided contract
 
-A commit removing gendered ticket pricing (`e24d7755`, 2026-05-30,
+A commit removing gendered ticket pricing (`38785355`, 2026-05-30,
 `Co-Authored-By: Claude Opus 4.8`) updated the admin event-creation form and
 the on-page price display to a single spots/price model. It did **not** touch
 the payment path: `api/purchase-ticket.js` still read
@@ -48,12 +48,12 @@ somehow passed the capacity check, price would have resolved to `$0`, so it
 would have charged only the `$2.50` service fee — a real ticket for a dollar
 fifty short of nothing.
 
-Fixed the next day, 2026-06-01 (`483ca977`), which added
+Fixed the next day, 2026-06-01 (`69cdb99d`), which added
 `lib/seat-model.js` as a single source of truth for both the admin and payment
 sides, plus 9 new unit tests.
 
 **Cost:** none realised. Stripe's live publishable key was not switched in
-until 2026-06-02 (`d8b90115`) — three days after the mismatch was introduced
+until 2026-06-02 (`e7a2007e`) — three days after the mismatch was introduced
 and a full day after it was fixed. No real customer, and no live payment
 method, could have reached this code path during the window it existed. The
 near-miss is real regardless: the shape of the bug (silently charge $2.50
@@ -61,8 +61,8 @@ instead of full price) is exactly the kind of thing that is expensive to
 notice once real money is involved, and this was fixed the week before real
 money was involved.
 
-**Anchor:** commits `e24d7755` (introduces the mismatch) and `483ca977`
-(fixes it); Stripe live-key switch at `d8b90115`.
+**Anchor:** commits `38785355` (introduces the mismatch) and `69cdb99d`
+(fixes it); Stripe live-key switch at `e7a2007e`.
 
 ## DECISION — nothing further was needed
 
