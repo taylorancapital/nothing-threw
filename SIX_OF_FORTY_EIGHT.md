@@ -58,7 +58,7 @@ Of my forty-eight incidents, the ones with the largest realised cost are all thi
 
 - A report read an ad platform's attributed conversions as if they were sales, concluded sales had stopped nine days earlier, and reached the main branch. Fourteen tickets had actually sold in that window. The platform sees roughly 11% of real sales; a complete join of spend against revenue already existed in the database and nobody had read it.
 - A cross-gender ad-spend leak was measured at $241.81 by comparing lifetime spend against each ad set's *current* targeting — invalid for any ad set ever edited, and most had been. Re-measured against each edit's own timestamp: $180.56 of it predated the targeting lock entirely. The real figure was about a quarter of the first one.
-- An analysis of alternative ad channels stated that a particular platform's ads had never run on the account. They'd run on every event for four months, at roughly a fifth of the cost-per-ticket of the channel I was being advised to keep.
+- An analysis of alternative ad channels stated that a particular platform's ads had never run on the account. They'd run on every event for four months — and by each platform's own attribution, they'd delivered more than three times as many tickets as the channel I was being advised to keep, on under a third of the spend.
 
 Every one of those passed every check in the repository, because no check in any repository asks whether a conclusion is true.
 
