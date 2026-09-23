@@ -38,6 +38,8 @@ Across the four passes this catalogue has been through, that share has gone **11
 
 The month files carry the full anchors — the commit, log line, pull request or API read behind each incident. Incident numbers are assigned in catalogue order, not calendar order, and are never reassigned once published, so a May incident can carry a higher number than an August one.
 
+**A note on the anchors.** They reference commits in a private repository, so the click-through is unavailable. Each one carries its date, commit subject and pull request number, which is enough to identify a specific change — but you are taking the contents on trust, and you should weigh the whole catalogue accordingly. The repository was public until September 2026 and was made private after a history rewrite removed customer personal data from it; see incident 40 for what that rewrite got wrong.
+
 ---
 
 ## The incidents
