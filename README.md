@@ -1,30 +1,30 @@
 # Nothing Threw
 
-**Forty-eight ways autonomous agents failed while running a live business — and how each one was actually caught.**
+**Seventy-four ways autonomous agents failed while running a live business — and how each one was actually caught.**
 
-*Field notes, May–September 2026. One events business: a live Meta ad account, Stripe checkout, a Firestore back end, and a nightly analytics agent that writes reports and opens pull requests unattended.*
+*Field notes, May–October 2026. One events business: a live Meta ad account, Stripe checkout, a Firestore back end, and a nightly analytics agent that writes reports and opens pull requests unattended.*
 
-Forty-two of the forty-eight reported success. The interesting question turned out not to be how they failed, but how anyone ever found out — and, five months in, whether that's getting any easier. It isn't yet.
+Forty-two of the first forty-eight reported success. The interesting question turned out not to be how they failed, but how anyone ever found out — and, five months in, whether that's getting any easier. It isn't yet.
 
-> **Start here →** [*Six of Forty-Eight*](SIX_OF_FORTY_EIGHT.md) — the argument in one essay.
+> **Start here →** [*Six of Forty-Eight*](SIX_OF_FORTY_EIGHT.md) — the argument in one essay, written when the count stood at forty-eight.
 >
 > **Run it on your own system →** [The method](TAXONOMY.md) — detection modes, failure classes, the bar for inclusion, and a monthly pass you can copy.
 
 ---
 
-## How each of the 48 was detected
+## How each of the 74 was detected
 
 | Detection | Means | Count |
 |---|---|---:|
-| `GATE` | A deterministic check refused it | 1 |
-| `THREW` | An actual error surfaced at the time | 5 |
-| `HUMAN` | Someone distrusted a number or a claim | 12 |
+| `GATE` | A deterministic check refused it | 2 |
+| `THREW` | An actual error surfaced at the time | 7 |
+| `HUMAN` | Someone distrusted a number or a claim | 19 |
 | `OPERATOR` | Reported as "data went missing" | 1 |
-| `LATER` | Found by an unrelated dig, days to months on | 29 |
+| `LATER` | Found by an unrelated dig, days to months on | 45 |
 
-**Six of forty-eight were caught by anything automated — 13%.** The rest were caught because a person looked at a number and thought *that can't be right* — or because weeks later something else went wrong and led back to it.
+**Nine of seventy-four were caught by anything automated — 12%.** The rest were caught because a person looked at a number and thought *that can't be right* — or because weeks later something else went wrong and led back to it.
 
-Across the four passes this catalogue has been through, that share has gone **11%, 9%, 15%, 13%** — a narrow band with no trend. The one apparent rise was an artifact: backfilling earlier months added two same-day code bugs, exactly the loud, self-announcing kind, and lifted the numerator in a single stroke. Nothing had gotten better. As the incidents get subtler — wrong conclusions from correct data, not broken code — nothing built so far catches them.
+Across the five passes this catalogue has been through, that share has gone **11%, 9%, 15%, 13%, 12%** — a narrow band with no trend. The one apparent rise was an artifact: backfilling earlier months added two same-day code bugs, exactly the loud, self-announcing kind, and lifted the numerator in a single stroke. Nothing had gotten better. As the incidents get subtler — wrong conclusions from correct data, not broken code — nothing built so far catches them.
 
 ## The record, month by month
 
@@ -35,6 +35,9 @@ Across the four passes this catalogue has been through, that share has gone **11
 | July 2026 | 2 | [FIELD_NOTES_2026-07.md](FIELD_NOTES_2026-07.md) |
 | August 2026 | 11 | [FIELD_NOTES_2026-08.md](FIELD_NOTES_2026-08.md) |
 | September 2026 | 31 | [FIELD_NOTES_2026-09.md](FIELD_NOTES_2026-09.md) |
+| 12 September – 2 October 2026 | 26 | [FIELD_NOTES_2026-10.md](FIELD_NOTES_2026-10.md) |
+
+The write-ups under "The incidents" below cover incidents 01–48. Incidents 49–74 are written up in [FIELD_NOTES_2026-10.md](FIELD_NOTES_2026-10.md) and are not repeated here.
 
 The month files carry the full anchors — the commit, log line, pull request or API read behind each incident. Incident numbers are assigned in catalogue order, not calendar order, and are never reassigned once published, so a May incident can carry a higher number than an August one.
 
@@ -390,7 +393,7 @@ Nothing yet catches a wrong conclusion drawn from correct data — which is now 
 
 - **One project, one operator, five months.** These are incidents from a single small business, not a survey. The frequencies here are not a base rate for anything.
 - **Selection bias runs in the obvious direction, and it gets sharper the further back the record goes.** This catalogue contains the failures that were eventually noticed. The month a live dashboard, daily automation, and concurrent agent sessions all existed at once produced eleven incidents; the three months before it — pre-launch, first-week-live, and the automation's own first month — produced six between them, not because those months were cleaner, but because less was live yet to leave a mistake worth noticing.
-- **It has been audited against the live systems exactly once, and the audit found an error** (incident 40). The other forty-seven have not had that treatment. Discount the numbers accordingly.
+- **It has been checked against the live systems twice, and each check found an error** (incidents 40 and 51). The other seventy-two have not had that treatment. Discount the numbers accordingly.
 - **"Cost" means what was lost or nearly lost,** established from logs, commits and API reads at the time. Where an incident was caught before doing damage, that is stated rather than counted as a loss.
 - **Not a claim that the agents were unusually bad.** Most of these are ordinary distributed-systems and API-integration failures. What is specific to agents is the rate at which confidently-wrong output gets produced and the ease with which it reaches a pull request — or, in two cases, an operator's inbox as an emergency.
 - **Names, account identifiers and customer records are omitted throughout.**
