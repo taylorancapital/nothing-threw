@@ -1,4 +1,4 @@
-# Six of Forty-Eight
+# Nine of Seventy-Four
 
 **On 11 September 2026, at two in the morning, an agent told me my business had stopped selling tickets.**
 
@@ -18,17 +18,17 @@ I've been keeping a log of every way the agents running my business have failed,
 
 Five categories. A deterministic check refused it (`GATE`). An actual error surfaced at the time (`THREW`). A person distrusted a number (`HUMAN`). Someone reported that data looked missing (`OPERATOR`). Or it turned up months later, during an unrelated dig (`LATER`).
 
-Forty-eight incidents. Here's the distribution:
+Seventy-four incidents. Here's the distribution:
 
 | Detection | Count |
 |---|---:|
-| `GATE` — a deterministic check refused it | 1 |
-| `THREW` — an actual error surfaced | 5 |
-| `HUMAN` — someone distrusted a number | 12 |
+| `GATE` — a deterministic check refused it | 2 |
+| `THREW` — an actual error surfaced | 7 |
+| `HUMAN` — someone distrusted a number | 19 |
 | `OPERATOR` — reported as "data went missing" | 1 |
-| `LATER` — found by an unrelated dig | 29 |
+| `LATER` — found by an unrelated dig | 45 |
 
-**Six of forty-eight were caught by anything automated.** Twenty-nine were found by accident, weeks or months on, by someone looking for something else entirely.
+**Nine of seventy-four were caught by anything automated.** Forty-five were found by accident, weeks or months on, by someone looking for something else entirely.
 
 The business is small and real: a live ad account, Stripe checkout, a Firestore back end, an events product with actual customers. The agents write code, run the nightly analysis, publish social content, adjust ad budgets. Real money moves through decisions they influence.
 
@@ -36,7 +36,7 @@ The business is small and real: a live ad account, Stripe checkout, a Firestore 
 
 I assumed this ratio would improve. That's the whole reason the log records detection mode instead of just the failure — I wanted a number that would move as the countermeasures accumulated.
 
-It hasn't. Across five months, a 2.7× growth in catalogued incidents, and every gate, test and check built in response, the automated share has stayed between **9% and 15%**. It went 11%, then 9%, then 15%, then 13%. The one apparent improvement was an artifact: a backfill pass that swept older months added two same-day syntax errors from June — exactly the loud, self-announcing kind — and lifted the numerator in a single stroke. Nothing had gotten better. The sample had changed shape.
+It hasn't. Across five months, a roughly fourfold growth in catalogued incidents (18 to 74), and every gate, test and check built in response, the automated share has stayed between **9% and 15%**. It went 11%, then 9%, then 15%, then 13%, then 12%. The one apparent improvement was an artifact: a backfill pass that swept older months added two same-day syntax errors from June — exactly the loud, self-announcing kind — and lifted the numerator in a single stroke. Nothing had gotten better. The sample had changed shape.
 
 Countermeasures *do* get built. A stale-link check became a real CI step the day after a published listing served a 404. A pricing bug got a regression test. Swallowed email rejections got a counter. Every one of them works.
 
@@ -54,7 +54,7 @@ As the agents get better, they stop making those mistakes. What replaces them is
 
 An agent that reads the right tables, runs the right queries, and reaches a false conclusion produces output that is syntactically perfect, internally consistent, confidently worded, and completely wrong. There is nothing for a test to grab. The code is fine. The query is fine. The data is fine. The *inference* is wrong, and inference has no stack trace.
 
-Of my forty-eight incidents, the ones with the largest realised cost are all this shape:
+Of my first forty-eight incidents, the ones with the largest realised cost are all this shape:
 
 - A report read an ad platform's attributed conversions as if they were sales, concluded sales had stopped nine days earlier, and reached the main branch. Fourteen tickets had actually sold in that window. The platform sees roughly 11% of real sales; a complete join of spend against revenue already existed in the database and nobody had read it.
 - A cross-gender ad-spend leak was measured at $241.81 by comparing lifetime spend against each ad set's *current* targeting — invalid for any ad set ever edited, and most had been. Re-measured against each edit's own timestamp: $180.56 of it predated the targeting lock entirely. The real figure was about a quarter of the first one.
@@ -70,7 +70,7 @@ It had been done three days earlier. I read it live off the task scheduler and f
 
 That error ran in the *pessimistic* direction. It under-counted a working countermeasure, on the one ratio this whole exercise exists to measure — which is the direction nobody reading a failure catalogue thinks to challenge.
 
-It's incident 40 now. I'm not being noble about this; it's the single most useful entry in the log. It's the only time anyone has audited a claim in the catalogue against the live system, and the audit found an error. Forty-seven entries have not had that treatment. Whatever you conclude from my numbers, discount them accordingly — I do.
+It's incident 40 now. I'm not being noble about this; it's the single most useful entry in the log. It was the first time anyone audited a claim in the catalogue against the live system, and the audit found an error. The next pass found a second (incident 51): I had cited a link scanner as my biggest free channel, and 129 of its 136 sessions were a machine. Seventy-two entries have not had that treatment. Whatever you conclude from my numbers, discount them accordingly — I do.
 
 ## What this doesn't mean
 
@@ -96,4 +96,4 @@ The pattern underneath all of it: for five months, my systems have been reliable
 
 ---
 
-*The full catalogue — all 48 incidents, each anchored to a commit, a log line, a pull request, or an API read taken at the time — is at [github.com/taylorancapital/nothing-threw](https://github.com/taylorancapital/nothing-threw). It's updated monthly.*
+*The full catalogue — all 74 incidents, each anchored to a commit, a log line, a pull request, or an API read taken at the time — is at [github.com/taylorancapital/nothing-threw](https://github.com/taylorancapital/nothing-threw). It's updated monthly.*
