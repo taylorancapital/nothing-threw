@@ -24,11 +24,11 @@ Eighty-four incidents. Here's the distribution:
 |---|---:|
 | `GATE` — a deterministic check refused it | 2 |
 | `THREW` — an actual error surfaced | 8 |
-| `HUMAN` — someone distrusted a number | 26 |
+| `HUMAN` — someone distrusted a number | 28 |
 | `OPERATOR` — reported as "data went missing" | 1 |
-| `LATER` — found by an unrelated dig | 47 |
+| `LATER` — found by an unrelated dig | 45 |
 
-**Ten of eighty-four were caught by anything automated.** Forty-seven were found by accident, weeks or months on, by someone looking for something else entirely.
+**Ten of eighty-four were caught by anything automated.** Forty-five were found by accident, weeks or months on, by someone looking for something else entirely.
 
 The business is small and real: a live ad account, Stripe checkout, a Firestore back end, an events product with actual customers. The agents write code, run the nightly analysis, publish social content, adjust ad budgets. Real money moves through decisions they influence.
 

@@ -18,9 +18,9 @@ Forty-two of the first forty-eight reported success. The interesting question tu
 |---|---|---:|
 | `GATE` | A deterministic check refused it | 2 |
 | `THREW` | An actual error surfaced at the time | 8 |
-| `HUMAN` | Someone distrusted a number or a claim | 26 |
+| `HUMAN` | Someone distrusted a number or a claim | 28 |
 | `OPERATOR` | Reported as "data went missing" | 1 |
-| `LATER` | Found by an unrelated dig, days to months on | 47 |
+| `LATER` | Found by an unrelated dig, days to months on | 45 |
 
 **Ten of eighty-four were caught by anything automated — 12%.** The rest were caught because a person looked at a number and thought *that can't be right* — or because weeks later something else went wrong and led back to it.
 

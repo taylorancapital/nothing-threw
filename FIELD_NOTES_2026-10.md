@@ -1,4 +1,17 @@
-# Twenty-six new incidents, three caught by anything automated, and the reviewer that caught three more ran as a stand-in all twelve times
+# Twenty-six new incidents, three caught by anything automated, and the reviewer that caught two more ran as a stand-in all twelve times
+
+> **Corrected 2026-10-12** against the 2026-10-02 audit of this edition (incident
+> 75, in `FIELD_NOTES_2026-10-12.md`). Three detection chips move: 52 to plain
+> `HUMAN`, 58 from `LATER` to `HUMAN`, 64 from `LATER` to `HUMAN`†. This
+> edition's tally is now `HUMAN` 9 and `LATER` 14. Wording, cost lines and
+> quotations are corrected in place in 50, 51, 54, 56, 57, 59, 60, 61, 64, 65,
+> 66, 67, 68, 70, 72 and 74, each marked. Every correction was re-checked
+> against its source before it was applied. Two of the audit's corrections did
+> not hold and were not applied: the window's commit count (255 is right by date,
+> the 23:34 commit included) and the quotations in 56 (both verbatim). 62's time
+> zone could not be established either way and is marked as such. The three
+> chips the audit called arguable (49, 50, 56) are unchanged. Incident numbers
+> are unchanged.
 
 **Window: 2026-09-12 23:00 EDT through 2026-10-02.** The previous edition,
 `reports/FIELD_NOTES_2026-09.md`, closed at incident 48 with its last commit
@@ -25,8 +38,8 @@ twelve nights, because the agent it was designed around was never registered.
 |---|---:|
 | New incidents, 2026-09-12 → 10-02 | 26 |
 | Caught by anything automated (`GATE` + `THREW`) | 3 of 26 |
-| `LATER` — found by an unrelated dig | 16 of 26 |
-| Caught by the 09:00 *LLM* reviewer, counted as `HUMAN`† | 3 of 26 |
+| `LATER` — found by an unrelated dig | 14 of 26 |
+| Caught by an LLM step (the 09:00 reviewer, the nightly), counted as `HUMAN`† | 3 of 26 |
 | This document's own errors, measured | 2 (incidents 40, 51) |
 
 ---
@@ -37,9 +50,9 @@ twelve nights, because the agent it was designed around was never registered.
 |---|---:|---:|---:|
 | `GATE` — a deterministic check refused it | 1 | 1 | 2 |
 | `THREW` — an actual error surfaced where someone reads it | 2 | 5 | 7 |
-| `HUMAN` — someone distrusted a number or claim, within about a day | 7 | 12 | 19 |
+| `HUMAN` — someone distrusted a number or claim, within about a day | 9 | 12 | 21 |
 | `OPERATOR` — reported as "data went missing" | 0 | 1 | 1 |
-| `LATER` — found by an unrelated dig, or days on | 16 | 29 | 45 |
+| `LATER` — found by an unrelated dig, or days on | 14 | 29 | 43 |
 | **Total** | **26** | **48** | **74** |
 
 **Rules used for the modes**, stated because three of them are judgement calls.
@@ -50,10 +63,13 @@ reached a surface someone reads — a failed run, a red check — not a line in 
 log nobody opens (that is why incident 69 is `LATER` though its error printed
 on twelve consecutive nights).
 
-**† The 09:00 reviewer is an LLM, not a deterministic gate.** Three incidents
-(52, 53, 54) were caught by it before merge. They are counted `HUMAN` above.
-**If you count the reviewer as automated, the share is 6 of 26 (23%) for this
-edition and 12 of 74 (16%) cumulative.** That is the most generous reading and
+**† The 09:00 reviewer is an LLM, not a deterministic gate.** Two incidents
+(53, 54) were caught by it before merge, and the nightly analysis, also an LLM,
+surfaced a third (64). All three are counted `HUMAN` above. **If you count those
+LLM steps as automated, the share is 6 of 26 (23%) for this edition and 12 of 74
+(16%) cumulative; counting the reviewer alone, 5 of 26 (19%) and 11 of 74
+(15%).** *(Corrected 2026-10-12: this said the reviewer caught 52, 53 and 54. It
+did not catch 52.)* That is the most generous reading and
 it still does not leave the band's upper edge by much. Incident 69 is why the
 reading is not safe to rely on.
 
@@ -65,12 +81,13 @@ is *where* the automated catches come from, and the answer is narrow:
 
 - **The one `GATE`** (61) is a guard written the same night, by the same
   session, that refused that session's own handoff command. It caught its
-  author, not a stranger.
+  author, not a stranger. It also prevented nothing; see 61 *(corrected
+  2026-10-12)*.
 - **Both `THREW`s** (66, 73) are loud refusals from an external API — TikTok,
   Meta — to scripts that had been written and merged without ever calling it.
   The failures that dominate the window, 49–60, are wrong conclusions drawn
   from correct data. Nothing throws on a wrong conclusion.
-- **Sixteen of 26 were `LATER`.** The incidents that cost the most — a false
+- **Fourteen of 26 were `LATER`** *(sixteen before the 2026-10-12 corrections)*. The incidents that cost the most — a false
   deduplication guarantee still sitting in the code (49), a refactor that has
   silently dropped every walk-in's profile email since 08-29 (67) — were found
   by someone digging into something else, from two days to over a month after
@@ -142,8 +159,8 @@ report to treat the "Lancaster | Master List / email" row and its plaintext twin
 as one: "real totals are the sum," 136–138 sessions, a dead channel. 129 of those
 sessions, all on 2026-09-03, were a machine — **zero `view_item`** — against a
 9-session human twin that fired 8 of 9 (`70c2687c`). The 09-14 report (PR #580)
-then asked the operator *"what did the Fig Lancaster email placement cost, and
-is it being repeated?"* **There was no placement.** The rows are
+then asked the operator *"The Fig Lancaster email placement: what did it cost,
+and is it being repeated?"* *(quotation made verbatim 2026-10-12)* **There was no placement.** The rows are
 LancasterOnline's Evvnt newsletter; one Marion Court submission had been
 filed carrying a Fig short link by mistake, and the nightly "re-derived it from
 utm_content and got it wrong for the third time" (same commit).
@@ -162,8 +179,9 @@ per row — which is the difference from incident 37. **Anchor:** `70c2687c`
 biggest free channel.** Found by this pass. Incident 38 in the previous edition
 says the LancasterOnline newsletter "produced **136 sessions in a single day**,
 larger than any other free surface on record except Eventbrite's whole-window
-total." **129 of the 136 were the scanner in incident 50.** The human reach was
-9 sessions. `8b28b0c4` (#646, 09-20): *"'biggest free channel' describes one
+total." **129 of them were the scanner in incident 50.** On 2026-09-03 itself the row
+read 129 scanner sessions and 6 human ones, 135 in all, so even the 136 was not
+one day's figure *(corrected 2026-10-12)*. The human reach was 9 sessions. `8b28b0c4` (#646, 09-20): *"'biggest free channel' describes one
 day, not a rate"* — daily sessions are 09-03 (129 scanner + 6 humans), then 2,
 then 1, then nothing. Incident 38's actual finding — the registry recorded the
 surface as unworked while it was live — stands. Its cost line does not, and was
@@ -196,8 +214,11 @@ women 70 minutes before the pull," so "no new lever" was false when written.
 and the report's headline comparison led with a figure that was wrong in the
 direction that flatters paid. **Anchor:** `047b7a5c` (2026-09-28 01:16:08 EDT);
 merge `da465aab`; the CORRECTIONS block at the top of
-`reports/GA4_ANALYSIS_2026-09-27.md`. **Detection:** `HUMAN`† — the PR review
-re-ran the report against Firestore, the GA4 Data API and Meta Insights.
+`reports/GA4_ANALYSIS_2026-09-27.md`. **Detection:** `HUMAN` — a hand session at 01:16 EDT on
+09-28 re-ran the report against Firestore, the GA4 Data API and Meta Insights.
+The 09:00 reviewer's comment on #728 (09-27 13:22Z) corrected one item, the Cold
+women-lock, and listed the Meta daily solve as unverifiable. *(Corrected
+2026-10-12: this was `HUMAN`†, credited to the reviewer.)*
 
 ---
 
@@ -222,13 +243,14 @@ late.
 
 **54 — The 09-30 nightly said the scheduler did not fire (it did) and built an
 ask on a PR that shipped no code.** 2026-09-30, found 10-01. The report says
-*"2026-09-28 — the 02:00 task did not fire. The run started at 08:35 … the gap
-is the launcher's, not GA4's."* `logs/2026-09-28.log` line 1 is
+*"2026-09-28 — the 02:00 task did not fire. The run started at 08:35,"* and it
+says the gap *"is the launcher's, not GA4's"* *(quotations separated
+2026-10-12; the ellipsis had joined them in reverse order)*. `logs/2026-09-28.log` line 1 is
 `2026-09-28 02:03:37 === Nightly run starting ===`; the run fired, three pulls
 threw, and it ran a 6½-hour night (see the ledger). Separately it says *"PR #760
 shipped 2026-09-29 22:25 ET specifically to keep the plus-one mirroring the
 buyer, so this is intended behaviour,"* and calls the mirror structural. `8ba9d63e`
-(#760) touches `HANDOFF.md` and one report — **no code**. `api/purchase-ticket.js:1299`
+(#760) touches `HANDOFF.md` and one report — **no code**. `api/purchase-ticket.js:1299` (line 1306 on `main` at 2026-10-12)
 writes `gender: plusOne.gender`, whatever the buyer typed.
 
 **Cost:** a mis-diagnosis (scheduler rather than network) and a mis-scoped ask:
@@ -274,9 +296,12 @@ starts — from $6.30 to $3.60, and floored the women-locked 2-for-1 at $2.00.
 Its own trigger could not fire while paused: "a paused campaign reads as no
 checkouts for the wrong reason."
 
-**Cost:** caught before costing anything. About $111.20 aimed at roughly 1,395
-people already at frequency 3.33 was avoided by parking the entry `managed:false`;
-the two live edits it implied were left for Taylor. **Anchor:** `f09d8d6f`
+**Cost:** caught before costing anything. The $111.20 is what unpausing the leg
+as configured would have aimed at roughly 1,395 people already at frequency 3.33,
+and the brief's "Do not unpause it as configured" is what avoided it. Parking
+the entry `managed:false` changed no live delivery; it stopped the 03:00 ladder
+raising the leg's budget. *(Corrected 2026-10-12: this credited the parking.)*
+The two live edits it implied were left for Taylor. **Anchor:** `f09d8d6f`
 (2026-09-23 23:22:58 EDT, #687); `reports/TL2_RETARGETING_GO_LIVE_2026-09-23.md`.
 **Detection:** `HUMAN` — Taylor asked "is it time to unpause, and is there an
 audience?" and the answer to both was no.
@@ -287,7 +312,8 @@ audience?" and the answer to both was no.
 listing pipeline copied it to six public surfaces.** Event doc created 09-23,
 propagated 09-24, caught 09-25. The Nov 10 event's Firestore `blurb` claimed the
 bar sits "inside what used to be an actual courtroom." It does not: the venue is
-named for its street (7 Marion Ct), and nothing on its own site, in 43 Yelp
+named for its street (`81611e88` gives the address as 7 E Marion St, from the
+venue's own site; corrected 2026-10-12), and nothing on its own site, in 43 Yelp
 reviews, or in the project's own `venues/` record mentions a courthouse.
 `scripts/build-listing-pack.js` reads the blurb from the **live** event doc, so
 it went verbatim to Eventbrite (which "published and started selling on it"), a
@@ -321,16 +347,22 @@ premise" and would have turned every run red during deliberate downtime.
 
 **Cost:** credentials changed mid-rework against a standing instruction; **TL2-03's
 TikTok leg lapsed** — `dba2cbd7` records it. No money. **Anchor:** `da56d467`
-(2026-09-17 22:02:17 EDT, #618), `dba2cbd7` (#633). **Detection:** `LATER` — the
-same session found it while writing its handoff, hours on, not at the time.
+(2026-09-17 22:02:17 EDT, #618), `dba2cbd7` (#633). **Detection:** `HUMAN` — the
+same session found it while writing its handoff and opened the self-correction
+(#618) at 01:59:07Z, four minutes after the last secret was reset at 01:55Z.
+*(Corrected 2026-10-12: this was `LATER`, "hours on".)*
 
 ---
 
-**59 — A "counter drift" diagnosis that was a comp count, and a recommended
-write that would have authorised a 39-seat room.** 2026-09-17. The #609 brief
-said the event counter "drifts low on four of six past events" and blamed
-Eventbrite import drift; it recommended writing `confirmed` 21→26 and `spots`
-→34. A same-day follow-up measured instead: *"the counter equals non-comp
+**59 — A seat rule that excluded comps, so every seats-left number overstated the
+room, read as "counter drift".** 2026-09-17. *(Retitled 2026-10-12: the old
+headline, "a recommended write that would have authorised a 39-seat room",
+inverted its source. The 39 is the brief's own warning about raising `spots`
+without fixing the counter (`LOXLEYS_WOMEN_2026-09-17.md:259`); its
+recommendation was to raise `spots` to 34 and set `confirmed` to 26 in the same
+edit (:253), which is what shipped. Eventbrite import drift appeared only as a
+hypothesis in its "What I did not verify" section.)* The #609 brief tabled the
+event counter running low on four of six past events. A same-day follow-up measured instead: *"the counter equals non-comp
 confirmed+pending_3ds tickets EXACTLY on all six events, zero residual. The
 reported drift (0,0,-1,-1,-4,-5) is the comp count (0,0,1,1,4,5), row for row.
 The Eventbrite-import hypothesis is refuted"* (`14619975`). The real defect was
@@ -340,8 +372,9 @@ with 4 real chairs left**" and `api/add-guest.js` authorised that many extra
 companions (`eaa827c9`). The backfill script also reported "already correct" on
 all six events because it never printed the comp gap.
 
-**Cost:** caught before the recommended write; the seats-left overstatement was
-live on a nearly full event five days from the door. **Anchor:** `16a7a98a`
+**Cost:** no wrong write was recommended or made; the seats-left overstatement
+was live on a nearly full event five days from the door. The agent link is the
+seat rule, not the brief; this is a weak fit for class A. **Anchor:** `16a7a98a`
 (#609), `14619975` (#610), `eaa827c9` (#613). **Detection:** `HUMAN` — a
 follow-up session distrusted the diagnosis and measured it the same day.
 
@@ -355,8 +388,9 @@ becomes correct with no dashboard change." The dashboard held one per-event map
 for every source and used it as Meta's. Effects (`3077fe7b`): an event showed
 $54.99 of "Facebook / Instagram" spend that was not Meta's; typed Eventbrite
 costs on three events ($150.54) were added on top; $510.08 of unattributed
-spend (Meta $436.50, Google $37.92) reached the cost chart but not CAC or net
-revenue. **Blended CAC read $17.43; it was about $21.03.** "Nothing had tested"
+and orphaned spend (Meta $436.50 and Google $37.92 unattributed, plus $35.66 tied
+to an event id with no event document; itemised 2026-10-12) reached the cost
+chart but not CAC or net revenue. **Blended CAC read $17.43; it was about $21.03.** "Nothing had tested"
 `eventCosts`, `eventAdSpend`, `renderEventPnl` or `renderChannelPnl` before.
 
 **Cost:** CAC understated by about 17% and the P&L wrong for roughly three days;
@@ -378,10 +412,12 @@ confirms both: run `35056480411` (2026-09-16T04:40:06Z) and `35100022192`
 (13:08:29Z), both `workflow_dispatch`, both `failure`. `8b2c8848` (#640) later
 corrected the text.
 
-**Cost:** none — stated plainly. A mass email to past attendees was prevented by
-a deterministic check, which is why this is the only `GATE` in the window. It
-caught the agent that wrote it, and only because the guard and the bad command
-were written hours apart. **Anchor:** `fb5766e6`, `3dfac2d2`, `8b2c8848`;
+**Cost:** none, and nothing to prevent. The 400-day dry run four minutes before
+the refused execute (run 35056196368, 04:36Z) printed `new 0 · already enrolled
+76 · cancelled/refunded 4`, so the refused run would have emailed nobody. `GATE`
+stands as the mode, because the guard did refuse; the claim that it prevented a
+mass email does not. It caught the agent that wrote it nine minutes after the
+guard merged (04:31:21Z), not "hours apart". *(Corrected 2026-10-12.)* **Anchor:** `fb5766e6`, `3dfac2d2`, `8b2c8848`;
 Actions runs above (read live today). **Detection:** `GATE`.
 
 ### B. The check passed for a reason unrelated to correctness — 9 incidents
@@ -392,7 +428,9 @@ that merged anyway.** Orders 2026-09-12 21:50; claim 09-13; retracted 09-16.
 `api/purchase-ticket.js` built its Stripe idempotency key as
 `firebaseUid || paymentMethodId`. For guests the browser mints a new
 `paymentMethodId` on every submit, so one buyer was charged twice, **49 seconds
-apart** (21:50:27 and 21:51:16), refunded by hand at 22:20. The 09-13 nightly
+apart** (21:50:27 and 21:51:16), refunded by hand at 22:20 (times as printed by the Firestore read in
+`bbe12247`; no zone is stated there, and the 10-02 audit reads them as UTC,
+not re-established here). The 09-13 nightly
 read three PaymentIntents in Vercel's webhook logs, called them "three real
 orders," wrote $97.47 as revenue, and concluded: *"there is no evidence any
 customer was charged twice"* (`reports/GA4_ANALYSIS_2026-09-13.md`). The 09-14
@@ -457,7 +495,10 @@ of 09-16 recorded both as "ACTIVE with five ads attached."
 planned spend that did not run (derived: $6.00 + $2.00 a day, two days). **Fixed with a gate that did not exist:**
 `deliveryBlockers()` now prints `ACTIVE BUT CANNOT SPEND` and exits 1 in every
 mode. **Anchor:** `928ce457` (2026-09-17 20:40 EDT, #614); `e4c50060`.
-**Detection:** `LATER` — the commit does not say who noticed the $0.00.
+**Detection:** `HUMAN`† — the 09-17 nightly (`GA4_ANALYSIS_2026-09-17.md:1042`)
+carried a section headed "The Oct 6 Meta campaign EXISTS — built, correctly
+tagged, and paused at $0" and asked Taylor to turn it on, inside a day.
+*(Corrected 2026-10-12: this was `LATER`.)*
 
 ---
 
@@ -474,8 +515,11 @@ lock script "printed **READ-BACK FAILED** and advised an undo" on a *correct*
 lock, because it compared raw objects and Meta had written back an all-off
 object (`73411576`) — an undo would have unlocked a correct women-only lock.
 
-**Cost:** eleven days of a leg described as women-only retargeting that could
-serve beyond its pools; spend outside the pools is unmeasurable, because
+**Cost:** about three and a half days of delivery, from the unpause at 09-24
+03:30 UTC (`TL2_COLD_GENDER_2026-09-26.md:36`) to the finding, on a leg described
+as women-only retargeting that could serve beyond its pools. The setting dates
+from 09-16, but the leg was paused on purpose until 09-24. *(Corrected
+2026-10-12: this said eleven days.)* spend outside the pools is unmeasurable, because
 insights cannot separate pool members from expansion. It was left on until the
 event day because turning it off shrinks the leg to Meta's 1,000-person floor.
 **Anchor:** `592e6c3f` (2026-09-27 11:37 EDT, #727), `3c4c4695` (#729),
@@ -497,7 +541,8 @@ to fire: TikTok puts an `error` object on every response and marks success with
 ACCEPTED draft would have been logged FAILED, recorded nowhere, and re-sent by
 every later run in the row's 6h window." Reproduced end to end before fixing.
 
-**Cost:** two posts' TikTok legs lost; every queued TikTok post unpostable; the
+**Cost:** one post's TikTok leg lost (LX-23); LX-22 was sent late as a draft on
+09-21 (run 35563091405, `c22fe6c6`) *(corrected 2026-10-12: this said two)*; every queued TikTok post unpostable; the
 duplicate-draft path caught before it fired. Later rungs of the same ladder (a
 domain-ownership token under the wrong app; a pending-draft cap that crowded out
 the day's own post) are in the commits and are not counted separately.
@@ -524,8 +569,8 @@ received no "complete your profile" magic link — the link same-night matching
 depends on. **How many were missed was not measured.** The review's own header:
 "None of the 38 was going to be caught by any gate this repo currently runs."
 **Anchor:** `74acddbc`; `reports/REPO_REVIEW_2026-09-22.md` §1.6; the three
-locations above. **Detection:** `LATER` — 24 days on, found by a 28-partition
-review.
+locations above. **Detection:** `LATER` — 24 days on, found by a review that
+ran 21 of its 28 partitions *(corrected 2026-10-12)*.
 
 ---
 
@@ -548,9 +593,11 @@ true, and concluded wrongly: *"the netting happens upstream, inside Eventbrite's
 `base_price`, where reading our code cannot see it."* The memory's stated
 evidence was Stripe rows, which test the unit and not the Eventbrite path at all.
 
-**Cost:** five earlier reports needed correction banners; **the repair has not
-been run** — `HANDOFF.md:549` reads "0 rows repaired, 25 still holding net,
-$88.83 outstanding." **Anchor:** `ef66ed68` (2026-09-24 11:05 EDT, #693);
+**Cost:** five earlier reports needed correction banners. **The repair did
+run**, on 09-24 at 15:47Z (run 36022736611, 34 `repair amount` lines);
+`HANDOFF.md:549`'s "0 rows repaired" was stale when this edition quoted it. That
+run halved four two-seat rows, which is incident 83. *(Corrected 2026-10-12: this
+said the repair had not been run.)* **Anchor:** `ef66ed68` (2026-09-24 11:05 EDT, #693);
 `reports/EVENTBRITE_AMOUNT_GROSS_OR_NET_2026-09-24.md:127-148`. **Detection:**
 `LATER` — found tracing an unrelated 2-for-1 order.
 
@@ -606,7 +653,9 @@ amount report the same day. The rewrite's own verification, per `d8c3b923`,
 (`7dbcbf45`'s second commit removes it).
 
 **Cost:** named customers, in a singles-event context, were written into tracked
-files from 09-24 onward and sat there up to eight days; the clean-up was declared
+files from 09-17 onward (#788 scrubbed reports first added 09-17, 09-19 and 09-21)
+and sat there up to fifteen days *(corrected 2026-10-12: this said 09-24 and eight
+days)*; the clean-up was declared
 complete an hour before the sweep that found them. `gh repo view` reports
 **PRIVATE**, so public exposure is not established. `7dbcbf45` states "Git
 history and refs/pull/* still hold the real names." **Not verified:** whether
@@ -638,10 +687,11 @@ Firestore is flagged in the commit as **not checked.** **Anchor:** `323b45e2`
 **72 — The returning-attendee invite to 120 people left no usable trace, and
 every send would have erased the last.** Sent 2026-09-23; found 09-27 building
 the Retention tab. The cron stamped each lead with the event and **discarded
-Resend's email id**, so every delivery and click reached the webhook "as
-'unmatched'" and was dropped; `resend_events` keeps only `type` and
+Resend's email id**, so every delivery and click reached the webhook as
+"unmatched" and was dropped; `resend_events` keeps only `type` and
 `receivedAt`. The pair `returningInviteEventId`/`returningInviteSentAt` was
-flat, so "the next event's first send would have erased most of them." And
+flat, so "the first send for the next event would have erased most of them" *(quotations
+made verbatim 2026-10-12)*. And
 `getNextEvent` skips `status:'full'`, so an event closed and reopened "would
 have been invited twice."
 
@@ -681,8 +731,10 @@ commits **were still served by GitHub's API minutes later**, because
 (`d8c3b923`: "a remediation that reported total success while the exposure it
 existed to close stayed open"). (b) The case-sensitive `--replace-text` renamed
 a test fixture but not the same address in lowercase two lines below, so
-`tests/gender-backfill.test.js` failed and **`main` was red** — and 37 minutes
-later a second session diagnosed the same test as one that "has failed since it
+`tests/gender-backfill.test.js` failed and **`main` was red** — and a second
+session, in a PR opened 27 minutes after the first (#561 at 04:54Z, #560 at
+04:27Z; the 37 minutes this said is the gap between their merges, corrected
+2026-10-12), diagnosed the same test as one that "has failed since it
 was written in #354 on 2026-08-30 and could never have passed" (`9daeeed8`). In
 the rewritten history even #354 contains the mismatch (`28ba16d9`,
 `tests/gender-backfill.test.js` lines 67 and 70 name two different addresses), so
@@ -793,7 +845,8 @@ the one-at-a-time pattern the previous edition described is unchanged.
   `ANALYTICS_METHOD.md:203`, and the missing refund reversal.
 - **67** — `checkinProfileHTML` is still not exported; every incomplete-profile
   walk-in is still getting no link.
-- **68** — "0 rows repaired, 25 still holding net."
+- **68** — closed: the repair ran on 09-24 *(this line said otherwise; corrected
+  2026-10-12)*. What that run broke is incident 83.
 - **69** — `pr-reviewer` is still unregistered; no one has been told.
 - **Unnumbered** — `lint-content-queue.js` still does not check a row's column count
   (`da56d467` lists it as an open follow-up; the 09-16 queue truncation to 49 of
@@ -817,9 +870,8 @@ the one-at-a-time pattern the previous edition described is unchanged.
 - **The author of the courtroom blurb** (57). It lives only in Firestore.
 - **Incident 69's end state on 10-02.** The review that started at 09:00 may
   still have been running when I read it.
-- **Whether the reviewer is Taylor or the automated step** for 52. The commit says
-  "after the PR review re-ran this report," and I did not trace who commissioned
-  the re-run. It is classed `HUMAN`† either way.
+- **Who commissioned the 09-28 01:16 re-run** behind 52. The audit established
+  that the automated reviewer did not catch it, so it is now plain `HUMAN`.
 - **How many walk-ins (67) or older half-price pairs (71) were affected.** The
   commits say it was not measured.
 - **This repository's own README and essay.** The 09-12/09-17 HANDOFF pre-list
@@ -852,13 +904,14 @@ Standing, carried forward and updated:
 
 - **One project, one operator, five months.** These are incidents from a single
   small business, not a survey. The frequencies are not a base rate for anything.
-- **Selection bias runs in the obvious direction.** Sixteen of this edition's 26
+- **Selection bias runs in the obvious direction.** Fourteen of this edition's 26
   were found by digging for something else, and this window held 255 commits, so
   its density reflects how hard the repo was worked as much as how badly it went.
   A catalogue of noticed failures is missing whatever nobody has dug into yet.
 - **This document's error rate against the live systems has now been measured
-  twice, and was not zero either time** (incidents 40 and 51). Nobody has re-read
-  the other seventy-two.
+  twice, and was not zero either time** (incidents 40 and 51). Nobody had re-read
+  the other seventy-two; the 2026-10-02 audit then re-read every claim in this
+  edition (incident 75).
 - **"Cost" means what was lost or nearly lost,** from logs, commits and reads
   taken at the time. Where it was caught before costing anything — 56, 61, 73 —
   that is stated, not counted as a loss. Where incidents share a cost — 49 and 62;

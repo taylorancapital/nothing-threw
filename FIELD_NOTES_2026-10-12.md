@@ -39,9 +39,9 @@ detection mode for.
 |---|---:|---:|---:|
 | `GATE` — a deterministic check refused it | 0 | 2 | 2 |
 | `THREW` — an actual error surfaced where someone reads it | 1 | 7 | 8 |
-| `HUMAN` — someone distrusted a number or claim, within about a day | 7 | 19 | 26 |
+| `HUMAN` — someone distrusted a number or claim, within about a day | 7 | 21 | 28 |
 | `OPERATOR` — reported as "data went missing" | 0 | 1 | 1 |
-| `LATER` — found by an unrelated dig, or days on | 2 | 45 | 47 |
+| `LATER` — found by an unrelated dig, or days on | 2 | 43 | 45 |
 | **Total** | **10** | **74** | **84** |
 
 **Rules for the modes,** the same as the previous edition. `HUMAN` includes a
@@ -51,12 +51,12 @@ by an LLM step, either the 09:00 reviewer or the nightly analysis. Those count
 as `HUMAN`, never as automated. Two of this edition's seven `HUMAN`s are †
 (80, 84).
 
-**The previous edition's counts stand as published here.** The 2026-10-02 audit
-of that edition (incident 75) verified that three of its chips should move: 58
-from `LATER` to `HUMAN`, 64 from `LATER` to `HUMAN`†, and 52 from `HUMAN`† to
-plain `HUMAN`. They have not been applied to `FIELD_NOTES_2026-10.md`, so they
-are not applied in the table above. With them, cumulative `HUMAN` is 28 and
-`LATER` 45. Neither changes the numerator. Not every incident before 10-02 has
+**The previous edition is corrected in the same change as this one.** The
+2026-10-02 audit of that edition (incident 75) verified that three of its chips
+should move: 58 from `LATER` to `HUMAN`, 64 from `LATER` to `HUMAN`†, and 52 from
+`HUMAN`† to plain `HUMAN`. All three are now applied in `FIELD_NOTES_2026-10.md`,
+so its tally is `HUMAN` 9 and `LATER` 14, and the "Previous cumulative" column
+above includes them. Neither changes the numerator. Not every incident before 10-02 has
 had that kind of re-check, so the table measures what was noticed and how. It
 does not measure what was true.
 
@@ -115,10 +115,10 @@ one failing claim in 25 of the 26. These were verified by hand:
 - **68's "the repair has not been run" was false.** It ran on 09-24 (run
   36022736611), and that run is incident 83.
 
-**Cost:** the public catalogue has carried these claims since 10-02, and as of
-10-12 its October file is unchanged (last commit there: 10-02 18:19 UTC). The
+**Cost:** the public catalogue has carried these claims since 10-02, and its October
+file stayed uncorrected until this pass applied the audit on 10-12. The
 headline held: 9 of 74 was right. Its supporting line, "forty-five were found by
-accident," should read 43. This is the third time this document's numbers have
+accident," should have read 43. This is the third time this document's numbers have
 been measured against the live systems (after 40 and 51), and the third time
 they were wrong. **Anchor:** `8ecae871` (#792);
 `reports/NOTHING_THREW_AUDIT_2026-10-02.md`; `nothing-threw` merge `02f3826`.
@@ -398,6 +398,8 @@ that produced it, the same pattern every previous edition described.
   re-send script with a ledger (#819). Partial for 44: still path by path.
 - **`checkinProfileHTML` exported, with a structural test** (#818). Closes 67.
 - **Cloudflare keeps images five minutes** (#871). Closes 81.
+- **The audit's corrections applied to 49–74** (this pass). Each was re-checked
+  against its source first; two of them did not hold and were not applied.
 - **`scripts/reply-facts.js --check`** (#860): what an unattended reply may say.
   It has not yet run against a real reply, because of 82.
 
@@ -407,7 +409,6 @@ that produced it, the same pattern every previous edition described.
 - **69** — `pr-reviewer` unregistered.
 - **70 / 80** — six reports naming customers; no rule in the nightly prompt; no
   merge gate that reads a review verdict.
-- **75** — the audit's corrections are not in the public October file.
 - **82** — the social check is still waiting on its prompt.
 - **71** — the order-form fix on the Oct 20 and Nov 10 listings (asked 10-09).
 
