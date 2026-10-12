@@ -62,7 +62,7 @@ notice once real money is involved, and this was fixed the week before real
 money was involved.
 
 **Anchor:** commits `38785355` (introduces the mismatch) and `69cdb99d`
-(fixes it); Stripe live-key switch at `e7a2007e`.
+(fixes it); Stripe live-key switch at `e7a2007e`. **Detection:** `HUMAN` (as stated under EVIDENCE above; the chip was added 2026-10-12 so the count check can read it).
 
 ## DECISION — nothing further was needed
 

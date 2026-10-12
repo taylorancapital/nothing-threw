@@ -1,4 +1,4 @@
-# Nine of Seventy-Four
+# Ten of Eighty-Four
 
 **On 11 September 2026, at two in the morning, an agent told me my business had stopped selling tickets.**
 
@@ -18,17 +18,17 @@ I've been keeping a log of every way the agents running my business have failed,
 
 Five categories. A deterministic check refused it (`GATE`). An actual error surfaced at the time (`THREW`). A person distrusted a number (`HUMAN`). Someone reported that data looked missing (`OPERATOR`). Or it turned up months later, during an unrelated dig (`LATER`).
 
-Seventy-four incidents. Here's the distribution:
+Eighty-four incidents. Here's the distribution:
 
 | Detection | Count |
 |---|---:|
 | `GATE` — a deterministic check refused it | 2 |
-| `THREW` — an actual error surfaced | 7 |
-| `HUMAN` — someone distrusted a number | 19 |
+| `THREW` — an actual error surfaced | 8 |
+| `HUMAN` — someone distrusted a number | 26 |
 | `OPERATOR` — reported as "data went missing" | 1 |
-| `LATER` — found by an unrelated dig | 45 |
+| `LATER` — found by an unrelated dig | 47 |
 
-**Nine of seventy-four were caught by anything automated.** Forty-five were found by accident, weeks or months on, by someone looking for something else entirely.
+**Ten of eighty-four were caught by anything automated.** Forty-seven were found by accident, weeks or months on, by someone looking for something else entirely.
 
 The business is small and real: a live ad account, Stripe checkout, a Firestore back end, an events product with actual customers. The agents write code, run the nightly analysis, publish social content, adjust ad budgets. Real money moves through decisions they influence.
 
@@ -36,7 +36,7 @@ The business is small and real: a live ad account, Stripe checkout, a Firestore 
 
 I assumed this ratio would improve. That's the whole reason the log records detection mode instead of just the failure — I wanted a number that would move as the countermeasures accumulated.
 
-It hasn't. Across five months, a roughly fourfold growth in catalogued incidents (18 to 74), and every gate, test and check built in response, the automated share has stayed between **9% and 15%**. It went 11%, then 9%, then 15%, then 13%, then 12%. The one apparent improvement was an artifact: a backfill pass that swept older months added two same-day syntax errors from June — exactly the loud, self-announcing kind — and lifted the numerator in a single stroke. Nothing had gotten better. The sample had changed shape.
+It hasn't. Across five months, a roughly fourfold growth in catalogued incidents (18 to 84), and every gate, test and check built in response, the automated share has stayed between **9% and 15%**. It went 11%, then 9%, then 15%, then 13%, then 12%, then 12%. The one apparent improvement was an artifact: a backfill pass that swept older months added two same-day syntax errors from June — exactly the loud, self-announcing kind — and lifted the numerator in a single stroke. Nothing had gotten better. The sample had changed shape.
 
 Countermeasures *do* get built. A stale-link check became a real CI step the day after a published listing served a 404. A pricing bug got a regression test. Swallowed email rejections got a counter. Every one of them works.
 
@@ -96,4 +96,4 @@ The pattern underneath all of it: for five months, my systems have been reliable
 
 ---
 
-*The full catalogue — all 74 incidents, each anchored to a commit, a log line, a pull request, or an API read taken at the time — is at [github.com/taylorancapital/nothing-threw](https://github.com/taylorancapital/nothing-threw). It's updated monthly.*
+*The full catalogue — all 84 incidents, each anchored to a commit, a log line, a pull request, or an API read taken at the time — is at [github.com/taylorancapital/nothing-threw](https://github.com/taylorancapital/nothing-threw). It's updated monthly.*
