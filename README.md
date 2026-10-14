@@ -6,7 +6,7 @@
 
 Forty-two of the first forty-eight reported success. The interesting question turned out not to be how they failed, but how anyone ever found out — and, five months in, whether that's getting any easier. It isn't yet.
 
-> **Start here →** [*Ten of Eighty-Four*](SIX_OF_FORTY_EIGHT.md) — the argument in one essay. (The filename predates the count; it is kept so existing links work.)
+> **Start here →** [*Ten of Eighty-Four*](TEN_OF_EIGHTY_FOUR.md) — the argument in one essay.
 >
 > **Run it on your own system →** [The method](TAXONOMY.md) — detection modes, failure classes, the bar for inclusion, and a monthly pass you can copy.
 
