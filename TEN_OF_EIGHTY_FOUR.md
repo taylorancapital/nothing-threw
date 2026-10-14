@@ -36,11 +36,11 @@ The business is small and real: a live ad account, Stripe checkout, a Firestore 
 
 I assumed this ratio would improve. That's the whole reason the log records detection mode instead of just the failure — I wanted a number that would move as the countermeasures accumulated.
 
-It hasn't. Across five months, a roughly fourfold growth in catalogued incidents (18 to 84), and every gate, test and check built in response, the automated share has stayed between **9% and 15%**. It went 11%, then 9%, then 15%, then 13%, then 12%, then 12%. The one apparent improvement was an artifact: a backfill pass that swept older months added two same-day syntax errors from June — exactly the loud, self-announcing kind — and lifted the numerator in a single stroke. Nothing had gotten better. The sample had changed shape.
+It hasn't. Across five months, a nearly fivefold growth in catalogued incidents (18 to 84), and every gate, test and check built in response, the automated share has stayed between **9% and 15%**. It went 11%, then 9%, then 15%, then 13%, then 12%, then 12%. The one apparent improvement was an artifact: a backfill pass that swept older months added two same-day syntax errors from June — exactly the loud, self-announcing kind — and lifted the numerator in a single stroke. Nothing had gotten better. The sample had changed shape.
 
 Countermeasures *do* get built. A stale-link check became a real CI step the day after a published listing served a 404. A pricing bug got a regression test. Swallowed email rejections got a counter. Every one of them works.
 
-None of them caught anything.
+None of them has caught a later incident. Of the table's two gate catches, one was a guard refusing a command from the session that had written it minutes earlier, and the refused command would have done no harm.
 
 They're each named for the single incident that produced them, built afterward, one at a time. And the failures that dominate now aren't the kind any of them look at.
 
@@ -70,7 +70,7 @@ It had been done three days earlier. I read it live off the task scheduler and f
 
 That error ran in the *pessimistic* direction. It under-counted a working countermeasure, on the one ratio this whole exercise exists to measure — which is the direction nobody reading a failure catalogue thinks to challenge.
 
-It's incident 40 now. I'm not being noble about this; it's the single most useful entry in the log. It was the first time anyone audited a claim in the catalogue against the live system, and the audit found an error. The next pass found a second (incident 51): I had cited a link scanner as my biggest free channel, and 129 of its 136 sessions were a machine. Seventy-two entries have not had that treatment. Whatever you conclude from my numbers, discount them accordingly — I do.
+It's incident 40 now. I'm not being noble about this; it's the single most useful entry in the log. It was the first time anyone audited a claim in the catalogue against the live system, and the audit found an error. The next pass found a second (incident 51): I had cited a link scanner as my biggest free channel, and 129 of its 135 sessions were a machine. The third, in October, re-opened every claim in one pass's 26 entries and found at least one that failed in 25 of them (incident 75). Incidents 01–48 and 76–84 have not had that treatment. Whatever you conclude from my numbers, discount them accordingly — I do.
 
 ## What this doesn't mean
 
