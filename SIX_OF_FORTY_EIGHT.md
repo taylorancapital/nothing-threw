@@ -1,1 +1,1 @@
-The essay moved to [TEN_OF_EIGHTY_FOUR.md](TEN_OF_EIGHTY_FOUR.md). This file stays so older links still land.
+The essay moved to [THIRTEEN_OF_A_HUNDRED.md](THIRTEEN_OF_A_HUNDRED.md). This file stays so older links still land.
